@@ -1,6 +1,13 @@
 unique_name: RLAM Portfolio
 object_type: model
 label: RLAM Portfolio
-dimensions:
-metrics:
-relationships: []
+dimensions: []
+metrics: []
+relationships:
+  - unique_name: V_MERCER_PORTFOLIO_LIST_empty_dimension
+    from:
+      dataset: V_MERCER_PORTFOLIO_LIST
+      join_columns: []
+    to:
+      dimension: ''
+      level: ''
