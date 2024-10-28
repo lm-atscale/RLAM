@@ -1,0 +1,26 @@
+unique_name: V_REF_ENUMERATION
+object_type: dataset
+label: V_REF_ENUMERATION
+columns:
+  - name: ENUMERATION_TYPE
+    data_type: string
+  - name: SOURCE
+    data_type: string
+  - name: SYSTEM
+    data_type: string
+  - name: ENUMERATION_VALUE
+    data_type: string
+  - name: ENUMERATION_DESCRIPTION
+    data_type: string
+  - name: INSERTED_BY
+    data_type: string
+  - name: INSERTED_ON
+    data_type: datetime
+  - name: UPDATED_BY
+    data_type: string
+  - name: UPDATED_ON
+    data_type: datetime
+  - name: ACTIVE_FLAG
+    data_type: boolean
+connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
+table: V_REF_ENUMERATION
