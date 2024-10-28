@@ -1,0 +1,36 @@
+unique_name: V_SECURITY_RLAM_CLASSIFICATION
+object_type: dataset
+label: V_SECURITY_RLAM_CLASSIFICATION
+columns:
+  - name: SECURITY_ID
+    data_type: string
+  - name: SECURITY_SOURCE
+    data_type: string
+  - name: RLAM_SECTOR_CODE
+    data_type: string
+  - name: RLAM_SECTOR
+    data_type: string
+  - name: RLAM_INSTRUMENT_CLASS
+    data_type: string
+  - name: RLAM_CLASSIFICATION_L5_CODE
+    data_type: decimal(38,0)
+  - name: RLAM_CLASSIFICATION_L5_NAME
+    data_type: string
+  - name: RLAM_CLASSIFICATION_L4_CODE
+    data_type: decimal(38,0)
+  - name: RLAM_CLASSIFICATION_L4_NAME
+    data_type: string
+  - name: RLAM_CLASSIFICATION_L3_CODE
+    data_type: decimal(38,0)
+  - name: RLAM_CLASSIFICATION_L3_NAME
+    data_type: string
+  - name: RLAM_CLASSIFICATION_L2_CODE
+    data_type: decimal(38,0)
+  - name: RLAM_CLASSIFICATION_L2_NAME
+    data_type: string
+  - name: RLAM_CLASSIFICATION_L1_CODE
+    data_type: decimal(38,0)
+  - name: RLAM_CLASSIFICATION_L1_NAME
+    data_type: string
+connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
+table: V_SECURITY_RLAM_CLASSIFICATION

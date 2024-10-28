@@ -1,0 +1,22 @@
+unique_name: V_MERCER_PORTFOLIO_LIST
+object_type: dataset
+label: V_MERCER_PORTFOLIO_LIST
+columns:
+  - name: ALADDIN_PORTFOLIO_ID
+    data_type: decimal(38,0)
+  - name: HSBC_PORTFOLIO_CODE
+    data_type: string
+  - name: PORTFOLIO_LONG_NAME
+    data_type: string
+  - name: PORTFOLIO_BASE_CURRENCY
+    data_type: string
+  - name: REPORTING_CURRENCY
+    data_type: string
+  - name: STATESTREET_PORTFOLIO_CODE
+    data_type: string
+  - name: EXCASHREWEIGHTED
+    data_type: decimal(38,0)
+  - name: PORTFOLIOTYPE
+    data_type: string
+connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
+table: V_MERCER_PORTFOLIO_LIST
