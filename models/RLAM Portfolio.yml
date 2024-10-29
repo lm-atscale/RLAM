@@ -3,11 +3,4 @@ object_type: model
 label: RLAM Portfolio
 dimensions: []
 metrics: []
-relationships:
-  - unique_name: SECURITY_POSITION_empty_dimension
-    from:
-      dataset: SECURITY_POSITION
-      join_columns: []
-    to:
-      dimension: ''
-      level: ''
+relationships: []
