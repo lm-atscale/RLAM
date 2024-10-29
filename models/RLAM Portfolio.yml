@@ -4,9 +4,9 @@ label: RLAM Portfolio
 dimensions: []
 metrics: []
 relationships:
-  - unique_name: V_MERCER_PORTFOLIO_LIST_empty_dimension
+  - unique_name: SECURITY_POSITION_empty_dimension
     from:
-      dataset: V_MERCER_PORTFOLIO_LIST
+      dataset: SECURITY_POSITION
       join_columns: []
     to:
       dimension: ''
