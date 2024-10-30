@@ -108,12 +108,4 @@ level_attributes:
     key_columns:
       - ALADDIN_SECURITY_GROUP
     name_column: ALADDIN_SECURITY_GROUP
-  - unique_name: V_MERCER_PORTFOLIO_LIST_empty_attr
-    label: V_MERCER_PORTFOLIO_LIST_empty_attr
-    contains_unique_names: false
-    dataset: V_MERCER_PORTFOLIO_LIST
-    is_hidden: true
-    is_unique_key: false
-    key_columns: []
-    name_column: ''
 type: standard
