@@ -2,5 +2,42 @@ unique_name: RLAM Portfolio
 object_type: model
 label: RLAM Portfolio
 dimensions: []
-metrics: []
-relationships: []
+metrics:
+  - unique_name: WEIGHT_sum
+relationships:
+  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Portofolio Dimension_Security ID
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+    to:
+      dimension: Portofolio Dimension
+      level: Security ID
+  - unique_name: >-
+      SECURITY_POSITION_HSBC_FUND_CODE_to_Portofolio Dimension_Portofolio HSBC
+      Code
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - HSBC_FUND_CODE
+    to:
+      dimension: Portofolio Dimension
+      level: Portofolio HSBC Code
+  - unique_name: >-
+      SECURITY_POSITION_ALADDIN_SECURITY_CUSIP_to_Portofolio Dimension_Aladdin
+      Security CUSIP
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - ALADDIN_SECURITY_CUSIP
+    to:
+      dimension: Portofolio Dimension
+      level: Aladdin Security CUSIP
+  - unique_name: SECURITY_POSITION_POSITION_DATE_to_Portofolio Dimension_Position Date
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - POSITION_DATE
+    to:
+      dimension: Portofolio Dimension
+      level: Position Date
