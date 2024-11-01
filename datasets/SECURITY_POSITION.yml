@@ -93,4 +93,8 @@ columns:
   - name: BUS_YR_END_FLAG
     data_type: boolean
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
-table: SECURITY_POSITION
+sql: |2-
+      SELECT  * 
+      
+      FROM   SE_DEMO_LIBRARY.RLAM_POV.SECURITY_POSITION
+      WHERE   WEIGHT <> 0
