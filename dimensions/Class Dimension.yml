@@ -1,0 +1,37 @@
+unique_name: Class Dimension
+object_type: dimension
+label: Class Dimension
+hierarchies:
+  - unique_name: Class Hierarchy
+    label: Class Hierarchy
+    levels:
+      - unique_name: Classification
+      - unique_name: CodeL5
+      - unique_name: Class Security ID
+level_attributes:
+  - unique_name: Classification
+    label: Classification
+    contains_unique_names: false
+    dataset: V_SECURITY_RLAM_CLASSIFICATION
+    is_unique_key: false
+    key_columns:
+      - RLAM_CLASSIFICATION_L1_NAME
+    name_column: RLAM_CLASSIFICATION_L1_NAME
+  - unique_name: CodeL5
+    label: CodeL5
+    contains_unique_names: false
+    dataset: V_SECURITY_RLAM_CLASSIFICATION
+    is_unique_key: false
+    key_columns:
+      - RLAM_CLASSIFICATION_L5_CODE
+    name_column: RLAM_CLASSIFICATION_L5_CODE
+  - unique_name: Class Security ID
+    label: Class Security ID
+    contains_unique_names: false
+    dataset: V_SECURITY_RLAM_CLASSIFICATION
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - SECURITY_ID
+    name_column: SECURITY_ID
+type: standard

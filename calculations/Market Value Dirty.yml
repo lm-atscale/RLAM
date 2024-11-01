@@ -2,5 +2,5 @@ unique_name: Market Value Dirty
 object_type: metric_calc
 label: Market Value Dirty
 expression: >-
-  ALLMEMBEREXCEPT( [Measures].[MarketValueDirty_sum], {[Dimension].[Portfolio Hierarchy], [Date Dimension].[Date Hierarchy]} )
+  ALLMEMBEREXCEPT( [Measures].[MarketValueDirty_sum], {[Portfolio Dimension].[Portfolio Hierarchy], [Date Dimension].[Date Hierarchy]} )
 is_hidden: false

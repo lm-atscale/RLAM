@@ -4,4 +4,3 @@ label: Weight
 calculation_method: sum
 column: WEIGHT
 dataset: SECURITY_POSITION
-is_hidden: true

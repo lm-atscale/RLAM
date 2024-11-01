@@ -4,4 +4,3 @@ label: Market Value Dirty
 calculation_method: sum
 column: MARKET_VALUE_DIRTY_IN_FUND_CURRENCY
 dataset: SECURITY_POSITION
-is_hidden: true

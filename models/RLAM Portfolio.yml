@@ -8,14 +8,6 @@ metrics:
   - unique_name: Weight_sum
   - unique_name: Weight
 relationships:
-  - unique_name: SECURITY_POSITION_HSBC_FUND_CODE_to_Dimension_Portfolio HSBC Code
-    from:
-      dataset: SECURITY_POSITION
-      join_columns:
-        - HSBC_FUND_CODE
-    to:
-      dimension: Dimension
-      level: Portfolio HSBC Code
   - unique_name: SECURITY_POSITION_POSITION_DATE_to_Date Dimension_Month End Date
     from:
       dataset: SECURITY_POSITION
@@ -24,3 +16,39 @@ relationships:
     to:
       dimension: Date Dimension
       level: Month End Date
+  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Security Dimension_Security ID
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+    to:
+      dimension: Security Dimension
+      level: Security ID
+  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Class Dimension_Class Security ID
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+    to:
+      dimension: Class Dimension
+      level: Class Security ID
+  - unique_name: >-
+      SECURITY_POSITION_HSBC_FUND_CODE_to_Portfolio Dimension_Portfolio HSBC
+      Code
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - HSBC_FUND_CODE
+    to:
+      dimension: Portfolio Dimension
+      level: Portfolio HSBC Code
+  - unique_name: >-
+      SECURITY_POSITION_POSITION_DATE_to_Portfolio Dimension_Portfolio Position
+      Date
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - POSITION_DATE
+    to:
+      dimension: Portfolio Dimension
+      level: Portfolio Position Date
