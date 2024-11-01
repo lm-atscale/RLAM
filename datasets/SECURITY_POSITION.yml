@@ -92,9 +92,62 @@ columns:
     data_type: boolean
   - name: BUS_YR_END_FLAG
     data_type: boolean
+  - name: ENUMERATION_TYPE
+    data_type: string
+  - name: SOURCE
+    data_type: string
+  - name: SYSTEM
+    data_type: string
+  - name: ENUMERATION_VALUE
+    data_type: string
+  - name: ENUMERATION_DESCRIPTION
+    data_type: string
+  - name: INSERTED_BY
+    data_type: string
+  - name: INSERTED_ON
+    data_type: datetime
+  - name: UPDATED_BY
+    data_type: string
+  - name: UPDATED_ON
+    data_type: datetime
+  - name: ACTIVE_FLAG
+    data_type: boolean
+  - name: ENUMERATION_TYPE
+    data_type: string
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
-sql: |2-
-      SELECT  * 
+sql: >-
+  WITH POS AS
+
+  (
+
+  SELECT  * 
       
-      FROM   SE_DEMO_LIBRARY.RLAM_POV.SECURITY_POSITION
-      WHERE   WEIGHT <> 0
+  FROM   SE_DEMO_LIBRARY.RLAM_POV.SECURITY_POSITION
+
+  WHERE   WEIGHT <> 0
+
+  ),
+
+
+  ENUMCash AS
+
+  (
+
+  SELECT  * 
+      
+  FROM   SE_DEMO_LIBRARY.RLAM_POV.V_REF_ENUMERATION
+
+  WHERE ENUMERATION_TYPE = 'HSBC_GL' 
+
+  )
+
+
+  SELECT  *, ENUMcash.ENUMERATION_TYPE
+
+
+  FROM POS 
+
+  INNER JOIN  ENUMcash 
+
+  ON ENUMcash.ENUMERATION_VALUE = LEFT(POS.SECURITY_ID, 7) || 'ccy' ||
+  SUBSTRING(POS.SECURITY_ID, 11, 2)

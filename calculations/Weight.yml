@@ -1,0 +1,6 @@
+unique_name: Weight
+object_type: metric_calc
+label: Weight
+expression: >-
+  ALLMEMBEREXCEPT( [Measures].[Weight_sum], {[Dimension].[Portfolio Hierarchy], [Date Dimension].[Date Hierarchy]} )
+is_hidden: false

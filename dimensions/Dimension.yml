@@ -4,21 +4,28 @@ label: Dimension
 hierarchies:
   - unique_name: Portfolio Hierarchy
     label: Portfolio Hierarchy
+    filter_empty: 'yes'
     levels:
-      - unique_name: Reporting Currency
-      - unique_name: Quarter Start Date
-      - unique_name: Position Date
-      - unique_name: ExCash
       - unique_name: Portfolio Type
       - unique_name: Portfolio Name
       - unique_name: Portfolio HSBC Code
-  - unique_name: Aladdin Security Hierarchy
-    label: Aladdin Security Hierarchy
-    levels:
-      - unique_name: Aladdin Security Group
-      - unique_name: Issuer ID
-      - unique_name: Aladdin Security CUSIP
-      - unique_name: Security ID
+        secondary_attributes:
+          - unique_name: ExCash
+            label: ExCash
+            contains_unique_names: false
+            dataset: V_MERCER_PORTFOLIO_LIST
+            is_unique_key: false
+            key_columns:
+              - EXCASHREWEIGHTED
+            name_column: EXCASHREWEIGHTED
+          - unique_name: Reporting Currency
+            label: Reporting Currency
+            contains_unique_names: false
+            dataset: V_MERCER_PORTFOLIO_LIST
+            is_unique_key: false
+            key_columns:
+              - REPORTING_CURRENCY
+            name_column: REPORTING_CURRENCY
 level_attributes:
   - unique_name: Portfolio Name
     label: Portfolio Name
@@ -36,38 +43,6 @@ level_attributes:
     key_columns:
       - HSBC_PORTFOLIO_CODE
     name_column: HSBC_PORTFOLIO_CODE
-  - unique_name: ExCash
-    label: ExCash
-    contains_unique_names: false
-    dataset: V_MERCER_PORTFOLIO_LIST
-    is_unique_key: false
-    key_columns:
-      - EXCASHREWEIGHTED
-    name_column: EXCASHREWEIGHTED
-  - unique_name: Position Date
-    label: Position Date
-    contains_unique_names: false
-    dataset: V_MERCER_PORTFOLIO_LIST
-    is_unique_key: false
-    key_columns:
-      - MONTHENDDATE
-    name_column: MONTHENDDATE
-  - unique_name: Quarter Start Date
-    label: Quarter Start Date
-    contains_unique_names: false
-    dataset: V_MERCER_PORTFOLIO_LIST
-    is_unique_key: false
-    key_columns:
-      - QUARTERSTARTDATE
-    name_column: QUARTERSTARTDATE
-  - unique_name: Reporting Currency
-    label: Reporting Currency
-    contains_unique_names: false
-    dataset: V_MERCER_PORTFOLIO_LIST
-    is_unique_key: false
-    key_columns:
-      - REPORTING_CURRENCY
-    name_column: REPORTING_CURRENCY
   - unique_name: Portfolio Type
     label: Portfolio Type
     contains_unique_names: false
@@ -76,37 +51,4 @@ level_attributes:
     key_columns:
       - PORTFOLIOTYPE
     name_column: PORTFOLIOTYPE
-  - unique_name: Issuer ID
-    label: Issuer ID
-    contains_unique_names: false
-    dataset: V_BL_SECURITY
-    is_unique_key: false
-    key_columns:
-      - ALADDIN_ISSUER_ID
-    name_column: ALADDIN_ISSUER_ID
-  - unique_name: Aladdin Security CUSIP
-    label: Aladdin Security CUSIP
-    contains_unique_names: false
-    dataset: V_BL_SECURITY
-    is_unique_key: false
-    key_columns:
-      - ALADDIN_SECURITY_CUSIP
-    name_column: ALADDIN_SECURITY_CUSIP
-  - unique_name: Security ID
-    label: Security ID
-    contains_unique_names: false
-    dataset: V_BL_SECURITY
-    is_unique_key: false
-    key_columns:
-      - SECURITY_ID
-    name_column: SECURITY_ID
-  - unique_name: Aladdin Security Group
-    label: Aladdin Security Group
-    contains_unique_names: false
-    dataset: V_BL_SECURITY
-    is_unique_key: false
-    key_columns:
-      - ALADDIN_SECURITY_GROUP
-    name_column: ALADDIN_SECURITY_GROUP
-
 type: standard

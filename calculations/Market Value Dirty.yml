@@ -1,4 +1,4 @@
-unique_name: Market_Value_Dirty_Allmember
+unique_name: Market Value Dirty
 object_type: metric_calc
 label: Market Value Dirty
 expression: >-
