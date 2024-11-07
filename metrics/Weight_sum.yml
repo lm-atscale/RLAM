@@ -1,6 +1,6 @@
 unique_name: Weight_sum
 object_type: metric
-label: Weight
+label: Weight_sum
 calculation_method: sum
 column: WEIGHT
 dataset: SECURITY_POSITION

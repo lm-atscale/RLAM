@@ -6,39 +6,18 @@ columns:
     data_type: string
   - name: SECURITY_SOURCE
     data_type: string
-  - name: RLAM_SECTOR_CODE
-    data_type: string
-  - name: RLAM_SECTOR
-    data_type: string
-  - name: RLAM_INSTRUMENT_CLASS
-    data_type: string
   - name: RLAM_CLASSIFICATION_L5_CODE
-    data_type: decimal(38,0)
-  - name: RLAM_CLASSIFICATION_L5_NAME
-    data_type: string
-  - name: RLAM_CLASSIFICATION_L4_CODE
-    data_type: decimal(38,0)
-  - name: RLAM_CLASSIFICATION_L4_NAME
-    data_type: string
-  - name: RLAM_CLASSIFICATION_L3_CODE
-    data_type: decimal(38,0)
-  - name: RLAM_CLASSIFICATION_L3_NAME
-    data_type: string
-  - name: RLAM_CLASSIFICATION_L2_CODE
-    data_type: decimal(38,0)
-  - name: RLAM_CLASSIFICATION_L2_NAME
-    data_type: string
-  - name: RLAM_CLASSIFICATION_L1_CODE
     data_type: decimal(38,0)
   - name: RLAM_CLASSIFICATION_L1_NAME
     data_type: string
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
-sql: |-
-  SELECT  * 
-
-  FROM  SE_DEMO_LIBRARY.RLAM_POV.V_SECURITY_RLAM_CLASSIFICATION
-    
-  WHERE SECURITY_SOURCE = 'HSBC'
-       OR
-       SECURITY_SOURCE = 'STATESTREET'
-       
+sql: |2-
+          select 
+          SECURITY_ID,
+          rlam_classification_L1_name, 
+          rlam_classification_l5_code,
+          SECURITY_SOURCE
+          
+          FROM SE_DEMO_LIBRARY.RLAM_POV.V_SECURITY_RLAM_CLASSIFICATION class
+          WHERE ( SECURITY_SOURCE = 'HSBC' OR SECURITY_SOURCE = 'STATESTREET' )
+          GROUP BY SECURITY_ID, rlam_classification_L1_name, rlam_classification_l5_code, SECURITY_SOURCE

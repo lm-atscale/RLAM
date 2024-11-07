@@ -2,73 +2,50 @@ unique_name: V_BL_SECURITY_CLASSIFICATION_HIST
 object_type: dataset
 label: V_BL_SECURITY_CLASSIFICATION_HIST
 columns:
-  - name: RECORD_KEY
-    data_type: string
-  - name: SECURITY_ID
-    data_type: string
   - name: CLASSIFICATION_DATE
     data_type: date
-  - name: CLASSIFICATION_SCHEME_CODE
-    data_type: string
-  - name: CLASSIFICATION_SOURCE
-    data_type: string
   - name: ALADDIN_SECURITY_CUSIP
-    data_type: string
-  - name: CLASSIFICATION_SCHEME_NAME
-    data_type: string
-  - name: CLASSIFICATION_NODE_NAME
-    data_type: string
-  - name: FULL_PATH
     data_type: string
   - name: LEVEL_01_NAME
     data_type: string
-  - name: LEVEL_01_CODE
+  - name: SECURITY_ID
     data_type: string
-  - name: LEVEL_02_NAME
-    data_type: string
-  - name: LEVEL_02_CODE
-    data_type: string
-  - name: LEVEL_03_NAME
-    data_type: string
-  - name: LEVEL_03_CODE
-    data_type: string
-  - name: LEVEL_04_NAME
-    data_type: string
-  - name: LEVEL_04_CODE
-    data_type: string
-  - name: LEVEL_05_NAME
-    data_type: string
-  - name: LEVEL_05_CODE
-    data_type: string
-  - name: LEVEL_06_NAME
-    data_type: string
-  - name: LEVEL_06_CODE
-    data_type: string
-  - name: LEVEL_07_NAME
-    data_type: string
-  - name: LEVEL_07_CODE
-    data_type: string
-  - name: LEVEL_08_NAME
-    data_type: string
-  - name: LEVEL_08_CODE
-    data_type: string
-  - name: LEVEL_09_NAME
-    data_type: string
-  - name: LEVEL_09_CODE
-    data_type: string
-  - name: LEVEL_10_NAME
-    data_type: string
-  - name: LEVEL_10_CODE
-    data_type: string
-  - name: RECORD_START_DATE
-    data_type: datetime
-  - name: RECORD_END_DATE
-    data_type: string
-  - name: ADC_UPDATE_DATE
-    data_type: string
-  - name: ACTIVE_FLAG
-    data_type: boolean
-  - name: SOURCE
+  - name: POSITION_DATE
+    data_type: date
+  - name: CLASSIFICATION_SCHEME_CODE
     data_type: string
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
-table: V_BL_SECURITY_CLASSIFICATION_HIST
+sql: >+
+
+  SELECT  
+
+  POS.SECURITY_ID,
+  POS.POSITION_DATE,
+  SecRating.ALADDIN_SECURITY_CUSIP,
+  CLASSIFICATION_SCHEME_CODE,
+  CLASSIFICATION_DATE,
+  LEVEL_01_NAME
+
+
+  FROM SE_DEMO_LIBRARY.RLAM_POV.SECURITY_POSITION POS 
+
+  LEFT JOIN   SE_DEMO_LIBRARY.RLAM_POV.V_BL_SECURITY_CLASSIFICATION_HIST
+  secRating
+  ON POS.aladdin_security_cusip = secRating.aladdin_security_cusip
+
+
+  AND secRating.CLASSIFICATION_SCHEME_CODE = 'RLAM_COMP_RAT'
+  AND secRating.classification_date = (SELECT MAX(CLASSIFICATION_DATE) FROM
+  SE_DEMO_LIBRARY.RLAM_POV.V_BL_SECURITY_CLASSIFICATION_HIST
+                                          WHERE CLASSIFICATION_SCHEME_CODE = 'RLAM_COMP_RAT'
+                                          AND ALADDIN_SECURITY_CUSIP = POS.ALADDIN_SECURITY_CUSIP
+                                          AND CLASSIFICATION_DATE <= POS.POSITION_DATE)
+
+  GROUP BY
+  POS.SECURITY_ID,
+  POS.POSITION_DATE,
+  SecRating.ALADDIN_SECURITY_CUSIP,
+  CLASSIFICATION_SCHEME_CODE,
+  CLASSIFICATION_DATE,
+  LEVEL_01_NAME
+

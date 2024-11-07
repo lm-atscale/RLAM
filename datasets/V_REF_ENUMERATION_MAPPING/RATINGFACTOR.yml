@@ -1,6 +1,6 @@
-unique_name: V_REF_ENUMERATION_MAPPING
+unique_name: RATINGFACTOR
 object_type: dataset
-label: V_REF_ENUMERATION_MAPPING
+label: RATINGFACTOR
 columns:
   - name: SOURCE_ENUMERATION_TYPE
     data_type: string
@@ -29,4 +29,10 @@ columns:
   - name: ACTIVE_FLAG
     data_type: boolean
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
-table: V_REF_ENUMERATION_MAPPING
+sql: |2-
+    SELECT  * 
+        
+    FROM   SE_DEMO_LIBRARY.RLAM_POV.V_REF_ENUMERATION_MAPPING
+
+    WHERE ACTIVE_FLAG = TRUE
+    AND TARGET_ENUMERATION_TYPE = 'MERCER_RATING_FACTOR'
