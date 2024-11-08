@@ -26,6 +26,9 @@ hierarchies:
             key_columns:
               - REPORTING_CURRENCY
             name_column: REPORTING_CURRENCY
+  - unique_name: Date Hierarchy
+    label: Date Hierarchy
+    levels:
       - unique_name: Quarter Start Date
       - unique_name: Month End Date
 level_attributes:
@@ -53,14 +56,6 @@ level_attributes:
     key_columns:
       - PORTFOLIOTYPE
     name_column: PORTFOLIOTYPE
-  - unique_name: Month End Date
-    label: Month End Date
-    contains_unique_names: false
-    dataset: V_MERCER_PORTFOLIO_LIST
-    is_unique_key: false
-    key_columns:
-      - MONTHENDDATE
-    name_column: MONTHENDDATE
   - unique_name: Quarter Start Date
     label: Quarter Start Date
     contains_unique_names: false
@@ -69,4 +64,12 @@ level_attributes:
     key_columns:
       - QUARTERSTARTDATE
     name_column: QUARTERSTARTDATE
+  - unique_name: Month End Date
+    label: Month End Date
+    contains_unique_names: false
+    dataset: V_MERCER_PORTFOLIO_LIST
+    is_unique_key: false
+    key_columns:
+      - MONTHENDDATE
+    name_column: MONTHENDDATE
 type: standard

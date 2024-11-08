@@ -8,6 +8,15 @@ hierarchies:
       - unique_name: Classification
       - unique_name: CodeL5
       - unique_name: Class Security ID
+        secondary_attributes:
+          - unique_name: Class rlam Sector
+            label: Class rlam Sector
+            contains_unique_names: false
+            dataset: V_SECURITY_RLAM_CLASSIFICATION
+            is_unique_key: false
+            key_columns:
+              - RLAM_SECTOR
+            name_column: RLAM_SECTOR
 level_attributes:
   - unique_name: Classification
     label: Classification

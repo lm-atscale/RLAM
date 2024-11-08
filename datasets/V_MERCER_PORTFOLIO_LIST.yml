@@ -33,3 +33,4 @@ sql: |-
   from SE_DEMO_LIBRARY.RLAM_POV.V_MERCER_PORTFOLIO_LIST p
           
   cross join SE_DEMO_LIBRARY.RLAM_POV.v_mercer_dates dt
+  WHERE HSBC_PORTFOLIO_CODE = 'RLACTPLRPF'

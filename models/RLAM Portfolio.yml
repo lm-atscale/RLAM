@@ -6,16 +6,7 @@ metrics:
   - unique_name: Market Value Dirty
   - unique_name: MarketValueDirty_sum
   - unique_name: Weight_sum
-  - unique_name: Weight
 relationships:
-  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Class Dimension_Class Security ID
-    from:
-      dataset: SECURITY_POSITION
-      join_columns:
-        - SECURITY_ID
-    to:
-      dimension: Class Dimension
-      level: Class Security ID
   - unique_name: >-
       SECURITY_POSITION_HSBC_FUND_CODE_to_Portfolio Dimension_Portfolio HSBC
       Code
@@ -26,6 +17,22 @@ relationships:
     to:
       dimension: Portfolio Dimension
       level: Portfolio HSBC Code
+  - unique_name: SECURITY_POSITION_POSITION_DATE_to_Portfolio Dimension_Month End Date
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - POSITION_DATE
+    to:
+      dimension: Portfolio Dimension
+      level: Month End Date
+  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Class Dimension_Class Security ID
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+    to:
+      dimension: Class Dimension
+      level: Class Security ID
   - unique_name: >-
       SECURITY_POSITION_ALADDIN_SECURITY_CUSIP_to_Security Dimension_Aladdin
       Security CUSIP
@@ -43,13 +50,5 @@ relationships:
         - SECURITY_ID
     to:
       dimension: Security Dimension
-      level: Security ID
-  - unique_name: SECURITY_POSITION_POSITION_DATE_to_Portfolio Dimension_Month End Date
-    from:
-      dataset: SECURITY_POSITION
-      join_columns:
-        - POSITION_DATE
-    to:
-      dimension: Portfolio Dimension
-      level: Month End Date
+      level: Security ID POS
 

@@ -10,14 +10,17 @@ columns:
     data_type: decimal(38,0)
   - name: RLAM_CLASSIFICATION_L1_NAME
     data_type: string
+  - name: RLAM_SECTOR
+    data_type: string
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
 sql: |2-
           select 
           SECURITY_ID,
           rlam_classification_L1_name, 
           rlam_classification_l5_code,
-          SECURITY_SOURCE
+          SECURITY_SOURCE,
+          rlam_sector
           
           FROM SE_DEMO_LIBRARY.RLAM_POV.V_SECURITY_RLAM_CLASSIFICATION class
           WHERE ( SECURITY_SOURCE = 'HSBC' OR SECURITY_SOURCE = 'STATESTREET' )
-          GROUP BY SECURITY_ID, rlam_classification_L1_name, rlam_classification_l5_code, SECURITY_SOURCE
+          GROUP BY SECURITY_ID, rlam_classification_L1_name, rlam_classification_l5_code, SECURITY_SOURCE, rlam_sector
