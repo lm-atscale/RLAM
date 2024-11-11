@@ -1,0 +1,7 @@
+unique_name: Price Clean In Fund Currency_Ammended
+object_type: metric_calc
+label: Price Clean In Fund Currency_Ammended
+expression: >-
+  CASE when [Measures].[Price Clean In Fund Currency_sum] = 0 Then 1 Else
+  [Measures].[Price Clean In Fund Currency_sum] End
+is_hidden: false
