@@ -1,0 +1,80 @@
+unique_name: Sec-Rating Dimension
+object_type: dimension
+label: Sec-Rating Dimension
+hierarchies:
+  - unique_name: Sec-Rating Hierarchy
+    label: Sec-Rating Hierarchy
+    levels:
+      - unique_name: Composite Rating
+      - unique_name: Rating Factor
+      - unique_name: Position Date Sec-Rating
+      - unique_name: Aladdin Security CUSIP Sec-Rating
+      - unique_name: Security ID Sec-Rating
+level_attributes:
+  - unique_name: Aladdin Security CUSIP Sec-Rating
+    label: Aladdin Security CUSIP
+    contains_unique_names: false
+    dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - ALADDIN_SECURITY_CUSIP
+    name_column: ALADDIN_SECURITY_CUSIP
+  - unique_name: Position Date Sec-Rating
+    label: Position Date
+    contains_unique_names: false
+    dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - POSITION_DATE
+    name_column: POSITION_DATE
+  - unique_name: Security ID Sec-Rating
+    label: Security ID
+    contains_unique_names: false
+    dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - SECURITY_ID
+    name_column: SECURITY_ID
+  - unique_name: Composite Rating
+    label: Composite Rating
+    contains_unique_names: false
+    custom_empty_member:
+      name: ' '
+      key:
+        - 'null'
+    dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+    is_unique_key: false
+    key_columns:
+      - LEVEL_01_NAME
+    name_column: LEVEL_01_NAME
+  - unique_name: Rating Factor
+    label: Rating Factor
+    contains_unique_names: false
+    custom_empty_member:
+      name: ' '
+      key:
+        - 'null'
+    dataset: RATINGFACTOR
+    is_unique_key: false
+    key_columns:
+      - SOURCE_ENUMERATION_VALUE
+    name_column: TARGET_ENUMERATION_VALUE
+relationships:
+  - from:
+      dataset: RATINGFACTOR
+      join_columns:
+        - SOURCE_ENUMERATION_VALUE
+    to:
+      level: Composite Rating
+    type: snowflake
+  - from:
+      dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+      join_columns:
+        - LEVEL_01_NAME
+    to:
+      level: Rating Factor
+    type: snowflake
+type: standard

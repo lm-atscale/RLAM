@@ -1,0 +1,8 @@
+unique_name: Region
+object_type: metric_calc
+label: Region
+expression: |-
+  CASE when [Class Dimension].[Classification].CurrentMember.Name  <> 'Cash'
+       Then [Security Dimension].[Region Hierarchy].CurrentMember.Name 
+      Else 'Cash' END
+is_hidden: false

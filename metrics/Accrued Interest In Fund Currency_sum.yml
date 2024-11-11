@@ -1,0 +1,6 @@
+unique_name: Accrued Interest In Fund Currency_sum
+object_type: metric
+label: Accrued Interest In Fund Currency
+calculation_method: sum
+column: ACCRUED_INTEREST_IN_FUND_CURRENCY
+dataset: SECURITY_POSITION
