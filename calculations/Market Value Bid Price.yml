@@ -1,0 +1,13 @@
+unique_name: Market Value Bid Price
+object_type: metric_calc
+label: Market Value Bid Price
+expression: >-
+  ALLMEMBEREXCEPT( ([Measures].[Market Value Dirty In Fund Currency_sum] -
+  [Measures].[Accrued Interest In Fund Currency_sum]) / 
+
+  CASE when [Measures].[Price Clean In Fund Currency_sum] = 0 Then 1 Else
+  [Measures].[Price Clean In Fund Currency_sum] End * 
+   CASE when [Measures].[Bid Price In Local Currency_sum] = 0 Then 1 Else [Measures].[Bid Price In Local Currency_sum] End, 
+  {[Portfolio Dimension].[Portfolio Hierarchy], [Portfolio Dimension].[Date
+  Hierarchy]} )
+is_hidden: false
