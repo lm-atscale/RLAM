@@ -1,7 +1,0 @@
-unique_name: Bid Price In Local Currency_Ammended
-object_type: metric_calc
-label: Bid Price In Local Currency_Ammended
-expression: >-
-  CASE when [Measures].[MBO Price In Local Currency_sum] = 0 Then 1 Else
-  [Measures].[MBO Price In Local Currency_sum] End
-is_hidden: false
