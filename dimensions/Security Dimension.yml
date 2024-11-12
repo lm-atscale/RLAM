@@ -28,7 +28,7 @@ level_attributes:
     label: Aladdin Security CUSIP
     contains_unique_names: false
     custom_empty_member:
-      name: ' '
+      name: ‎
       key:
         - 'null'
     dataset: V_BL_SECURITY

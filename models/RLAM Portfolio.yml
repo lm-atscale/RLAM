@@ -15,7 +15,15 @@ metrics:
   - unique_name: Market value Mid Price
   - unique_name: Bid Price In Local Currency_sum
   - unique_name: MBO Price In Local Currency_sum
-
+  - unique_name: Agg Mbo Price In Local Currency
+    folder: AGG TEST
+  - unique_name: Agg Price Clean In Fund Currency
+    folder: AGG TEST
+  - unique_name: Agg Accrued Interest In Fund Currency
+    folder: AGG TEST
+  - unique_name: Agg Market Value Dirty In Fund Currency
+    folder: AGG TEST
+  - unique_name: Market value Mid Price AGG TEST
 relationships:
   - unique_name: >-
       SECURITY_POSITION_HSBC_FUND_CODE_to_Portfolio Dimension_Portfolio HSBC
@@ -69,3 +77,33 @@ relationships:
     to:
       dimension: Security Dimension
       level: Region Security ID
+  - unique_name: >-
+      SECURITY_POSITION_Aggregate_POSITION_DATE_to_Portfolio Dimension_Month End
+      Date
+    from:
+      dataset: SECURITY_POSITION_Aggregate
+      join_columns:
+        - POSITION_DATE
+    to:
+      dimension: Portfolio Dimension
+      level: Month End Date
+  - unique_name: >-
+      SECURITY_POSITION_Aggregate_HSBC_FUND_CODE_to_Portfolio
+      Dimension_Portfolio HSBC Code
+    from:
+      dataset: SECURITY_POSITION_Aggregate
+      join_columns:
+        - HSBC_FUND_CODE
+    to:
+      dimension: Portfolio Dimension
+      level: Portfolio HSBC Code
+  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Sec-Rating Dimension_Composite Rating
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - POSITION_DATE
+        - SECURITY_ID
+        - ALADDIN_SECURITY_CUSIP
+    to:
+      dimension: Sec-Rating Dimension
+      level: Composite Rating
