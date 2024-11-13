@@ -1,6 +1,0 @@
-unique_name: Agg Market Value Dirty In Fund Currency
-object_type: metric
-label: Agg Market Value Dirty In Fund Currency
-calculation_method: sum
-column: AGG_MARKET_VALUE_DIRTY_IN_FUND_CURRENCY
-dataset: SECURITY_POSITION_Aggregate

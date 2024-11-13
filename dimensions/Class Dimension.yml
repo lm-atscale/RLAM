@@ -8,7 +8,7 @@ hierarchies:
       - unique_name: Class Security ID
         secondary_attributes:
           - unique_name: Class rlam Sector
-            label: Class rlam Sector
+            label: RLAM Sector
             contains_unique_names: false
             custom_empty_member:
               name: UNKNOWN

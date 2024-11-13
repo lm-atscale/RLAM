@@ -1,6 +1,0 @@
-unique_name: Agg Mbo Price In Local Currency
-object_type: metric
-label: Agg Mbo Price In Local Currency
-calculation_method: sum
-column: AGG_MBO_PRICE_IN_LOCAL_CURRENCY
-dataset: SECURITY_POSITION_Aggregate

@@ -15,15 +15,7 @@ metrics:
   - unique_name: Market value Mid Price
   - unique_name: Bid Price In Local Currency_sum
   - unique_name: MBO Price In Local Currency_sum
-  - unique_name: Agg Mbo Price In Local Currency
-    folder: AGG TEST
-  - unique_name: Agg Price Clean In Fund Currency
-    folder: AGG TEST
-  - unique_name: Agg Accrued Interest In Fund Currency
-    folder: AGG TEST
-  - unique_name: Agg Market Value Dirty In Fund Currency
-    folder: AGG TEST
-  - unique_name: Market value Mid Price AGG TEST
+  - unique_name: WRAF
 relationships:
   - unique_name: >-
       SECURITY_POSITION_HSBC_FUND_CODE_to_Portfolio Dimension_Portfolio HSBC
@@ -78,26 +70,8 @@ relationships:
       dimension: Security Dimension
       level: Region Security ID
   - unique_name: >-
-      SECURITY_POSITION_Aggregate_POSITION_DATE_to_Portfolio Dimension_Month End
-      Date
-    from:
-      dataset: SECURITY_POSITION_Aggregate
-      join_columns:
-        - POSITION_DATE
-    to:
-      dimension: Portfolio Dimension
-      level: Month End Date
-  - unique_name: >-
-      SECURITY_POSITION_Aggregate_HSBC_FUND_CODE_to_Portfolio
-      Dimension_Portfolio HSBC Code
-    from:
-      dataset: SECURITY_POSITION_Aggregate
-      join_columns:
-        - HSBC_FUND_CODE
-    to:
-      dimension: Portfolio Dimension
-      level: Portfolio HSBC Code
-  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Sec-Rating Dimension_Composite Rating
+      SECURITY_POSITION_POSITION_DATE_to_Sec-Rating Dimension_Composite
+      Rating_Join
     from:
       dataset: SECURITY_POSITION
       join_columns:
@@ -106,4 +80,26 @@ relationships:
         - ALADDIN_SECURITY_CUSIP
     to:
       dimension: Sec-Rating Dimension
-      level: Composite Rating
+      level: Composite Rating_Join
+  - unique_name: >-
+      SECURITY_POSITION_ALADDIN_SECURITY_CUSIP_to_Sec-Rating Dimension_Rating
+      Factor_Join
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+        - ALADDIN_SECURITY_CUSIP
+        - POSITION_DATE
+    to:
+      dimension: Sec-Rating Dimension
+      level: Rating Factor_Join
+  - unique_name: SECURITY_POSITION_POSITION_DATE_to_Sec-Rating Dimension_Rating Order_Join
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+        - ALADDIN_SECURITY_CUSIP
+        - POSITION_DATE
+    to:
+      dimension: Sec-Rating Dimension
+      level: Rating Order_Join

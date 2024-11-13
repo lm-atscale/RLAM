@@ -1,6 +1,0 @@
-unique_name: Agg Price Clean In Fund Currency
-object_type: metric
-label: Agg Price Clean In Fund Currency
-calculation_method: sum
-column: AGG_PRICE_CLEAN_IN_FUND_CURRENCY
-dataset: SECURITY_POSITION_Aggregate
