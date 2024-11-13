@@ -1,0 +1,22 @@
+unique_name: Local Currency
+object_type: dimension
+label: Local Currency
+hierarchies:
+  - unique_name: Local Currency Hierarchy
+    label: Local Currency Hierarchy
+    levels:
+      - unique_name: Local Currency
+is_degenerate: true
+level_attributes:
+  - unique_name: Local Currency
+    label: Local Currency
+    contains_unique_names: false
+    custom_empty_member:
+      name: UNKNOWN
+      key:
+        - 'null'
+    dataset: SECURITY_POSITION
+    key_columns:
+      - LOCAL_CURRENCY
+    name_column: LOCAL_CURRENCY
+type: standard

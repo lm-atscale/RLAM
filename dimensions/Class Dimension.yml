@@ -39,6 +39,12 @@ hierarchies:
             key_columns:
               - RLAM_CLASSIFICATION_L5_CODE
             name_column: RLAM_CLASSIFICATION_L5_CODE
+  - unique_name: Issuer Dimension
+    label: Issuer Dimension
+    levels:
+      - unique_name: Issuer Included
+      - unique_name: Classification L5 Code
+      - unique_name: Issuer Security ID
 level_attributes:
   - unique_name: Class Security ID
     label: Class Security ID
@@ -49,4 +55,41 @@ level_attributes:
     key_columns:
       - SECURITY_ID
     name_column: SECURITY_ID
+  - unique_name: Issuer Included
+    label: Issuer Included
+    contains_unique_names: false
+    custom_empty_member:
+      name: 'FALSE'
+      key:
+        - 'null'
+    dataset: ENUMISSUERINCLUSION
+    is_unique_key: false
+    key_columns:
+      - SOURCE_ENUMERATION_VALUE
+    name_column: TARGET_ENUMERATION_VALUE
+  - unique_name: Classification L5 Code
+    label: Classification L5 Code
+    contains_unique_names: false
+    dataset: V_SECURITY_RLAM_CLASSIFICATION
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - RLAM_CLASSIFICATION_L5_CODE
+    name_column: RLAM_CLASSIFICATION_L5_CODE
+  - unique_name: Issuer Security ID
+    label: Issuer Security ID
+    contains_unique_names: false
+    dataset: V_SECURITY_RLAM_CLASSIFICATION
+    is_unique_key: false
+    key_columns:
+      - SECURITY_ID
+    name_column: SECURITY_ID
+relationships:
+  - from:
+      dataset: V_SECURITY_RLAM_CLASSIFICATION
+      join_columns:
+        - RLAM_CLASSIFICATION_L5_CODE
+    to:
+      level: Issuer Included
+    type: snowflake
 type: standard
