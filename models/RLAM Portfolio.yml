@@ -15,9 +15,7 @@ metrics:
   - unique_name: Market value Mid Price
   - unique_name: Bid Price In Local Currency_sum
   - unique_name: MBO Price In Local Currency_sum
-  - unique_name: Bid Price In Local Currency_Ammended
-  - unique_name: MBO Price In Local Currency_Ammended
-  - unique_name: Price Clean In Fund Currency_Ammended
+
 relationships:
   - unique_name: >-
       SECURITY_POSITION_HSBC_FUND_CODE_to_Portfolio Dimension_Portfolio HSBC

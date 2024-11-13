@@ -1,6 +1,6 @@
 unique_name: Price Clean In Fund Currency_sum
 object_type: metric
-label: Price Clean In Fund Currency
+label: Price Clean In Fund Currency_sum
 calculation_method: sum
 column: PRICE_CLEAN_IN_FUND_CURRENCY
 dataset: SECURITY_POSITION
