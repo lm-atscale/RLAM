@@ -2,12 +2,11 @@ unique_name: RLAM Portfolio
 object_type: model
 label: RLAM Portfolio
 dimensions:
-  - Local Currency
+  - Fact Dimension
 metrics:
   - unique_name: Market Value Dirty
   - unique_name: Market Value Dirty In Fund Currency_sum
   - unique_name: Weight_sum
-  - unique_name: Region
   - unique_name: Accrued Interest In Fund Currency_sum
   - unique_name: Price Clean In Fund Currency_sum
   - unique_name: Ex Cash Total
@@ -17,7 +16,7 @@ metrics:
   - unique_name: Bid Price In Local Currency_sum
   - unique_name: MBO Price In Local Currency_sum
   - unique_name: WRAF
-  - unique_name: Local Currency_CA
+
 relationships:
   - unique_name: >-
       SECURITY_POSITION_HSBC_FUND_CODE_to_Portfolio Dimension_Portfolio HSBC

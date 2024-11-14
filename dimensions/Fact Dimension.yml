@@ -1,10 +1,11 @@
-unique_name: Local Currency
+unique_name: Fact Dimension
 object_type: dimension
-label: Local Currency
+label: Fact Dimension
 hierarchies:
-  - unique_name: Local Currency Hierarchy
-    label: Local Currency Hierarchy
+  - unique_name: Fact Hierarchy
+    label: Fact Hierarchy
     levels:
+      - unique_name: IsCash
       - unique_name: Local Currency
 is_degenerate: true
 level_attributes:
@@ -19,4 +20,12 @@ level_attributes:
     key_columns:
       - LOCAL_CURRENCY
     name_column: LOCAL_CURRENCY
+  - unique_name: IsCash
+    label: IsCash
+    contains_unique_names: false
+    dataset: SECURITY_POSITION
+    is_unique_key: false
+    key_columns:
+      - ISCASH
+    name_column: ISCASH
 type: standard

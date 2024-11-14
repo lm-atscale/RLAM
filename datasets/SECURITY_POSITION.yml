@@ -33,7 +33,7 @@ columns:
   - name: ENUMERATION_TYPE
     data_type: string
   - name: ISCASH
-    data_type: double
+    data_type: string
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
 sql: >-
   SELECT  

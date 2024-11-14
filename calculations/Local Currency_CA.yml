@@ -1,8 +1,0 @@
-unique_name: Local Currency_CA
-object_type: metric_calc
-label: Local Currency_CA
-expression: |-
-  CASE when [Class Dimension].[Classification].CurrentMember.Name  <> 'Cash'
-         Then [Local Currency].[Local Currency Hierarchy].CurrentMember.Name 
-        Else 'Cash' END
-is_hidden: false
