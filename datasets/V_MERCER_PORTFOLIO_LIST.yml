@@ -15,7 +15,7 @@ columns:
   - name: STATESTREET_PORTFOLIO_CODE
     data_type: string
   - name: EXCASHREWEIGHTED
-    data_type: decimal(38,0)
+    data_type: double
   - name: PORTFOLIOTYPE
     data_type: string
   - name: MONTHENDDATE
