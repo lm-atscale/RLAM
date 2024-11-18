@@ -1,0 +1,5 @@
+unique_name: WRAF
+object_type: metric_calc
+label: WRAF
+expression: '[Measures].[Re-Weighted Weight] * CDBL([Sec-Rating Dimension].[Rating Factor_sd].CurrentMember.Name)  / 100'
+is_hidden: false

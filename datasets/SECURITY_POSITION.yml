@@ -2,11 +2,7 @@ unique_name: SECURITY_POSITION
 object_type: dataset
 label: SECURITY_POSITION
 columns:
-  - name: FUND_ID
-    data_type: string
   - name: SECURITY_ID
-    data_type: string
-  - name: STATESTREET_FUND_CODE
     data_type: string
   - name: HSBC_FUND_CODE
     data_type: string
@@ -14,49 +10,19 @@ columns:
     data_type: string
   - name: POSITION_DATE
     data_type: date
-  - name: POSITION_TYPE_CODE
-    data_type: string
-  - name: LONG_SHORT_MARKER
-    data_type: string
   - name: LOCAL_CURRENCY
     data_type: string
   - name: FUND_CURRENCY
     data_type: string
-  - name: NOMINAL
-    data_type: decimal(38,10)
-  - name: BOOK_COST_IN_LOCAL_CURRENCY
-    data_type: decimal(38,10)
-  - name: BOOK_COST_IN_FUND_CURRENCY
-    data_type: decimal(38,10)
-  - name: MARKET_VALUE_CLEAN_IN_LOCAL_CURRENCY
-    data_type: decimal(38,10)
-  - name: MARKET_VALUE_CLEAN_IN_FUND_CURRENCY
-    data_type: decimal(38,10)
-  - name: ACCRUED_INTEREST_IN_LOCAL_CURRENCY
-    data_type: decimal(38,10)
   - name: ACCRUED_INTEREST_IN_FUND_CURRENCY
-    data_type: decimal(38,10)
-  - name: MARKET_VALUE_DIRTY_IN_LOCAL_CURRENCY
     data_type: decimal(38,10)
   - name: MARKET_VALUE_DIRTY_IN_FUND_CURRENCY
     data_type: decimal(38,10)
   - name: WEIGHT
     data_type: decimal(38,10)
-  - name: EXCHANGE_RATE_LOCAL_TO_FUND_CURRENCY
-    data_type: decimal(38,10)
-  - name: PRICE_CLEAN_IN_LOCAL_CURRENCY
-    data_type: decimal(38,11)
   - name: PRICE_CLEAN_IN_FUND_CURRENCY
     data_type: decimal(38,11)
-  - name: UNREALISED_GL_PRICE_IN_LOCAL_CURRENCY
-    data_type: decimal(38,10)
-  - name: UNREALISED_GL_PRICE_IN_FUND_CURRENCY
-    data_type: decimal(38,10)
-  - name: UNREALISED_GL_FX_IN_FUND_CURRENCY
-    data_type: decimal(38,10)
   - name: MBO_PRICE_IN_LOCAL_CURRENCY
-    data_type: decimal(38,11)
-  - name: OFFER_PRICE_IN_LOCAL_CURRENCY
     data_type: decimal(38,11)
   - name: BID_PRICE_IN_LOCAL_CURRENCY
     data_type: decimal(38,11)
@@ -64,90 +30,37 @@ columns:
     data_type: string
   - name: ASSET_SUBTYPE
     data_type: string
-  - name: SECURITY_NAME
-    data_type: string
-  - name: ISIN
-    data_type: string
-  - name: SEDOL
-    data_type: string
-  - name: TICKER
-    data_type: string
-  - name: RECORD_UPDATE_DATE
-    data_type: datetime
-  - name: ACTIVE_FLAG
-    data_type: boolean
-  - name: SOURCE
-    data_type: string
-  - name: SOURCE_FILENAME
-    data_type: string
-  - name: REVISION_NUMBER
-    data_type: decimal(38,0)
-  - name: ABOR_SECURITY_ID
-    data_type: string
-  - name: PREV_BD_FLAG
-    data_type: boolean
-  - name: BUS_MONTH_END_FLAG
-    data_type: boolean
-  - name: BUS_QT_END_FLAG
-    data_type: boolean
-  - name: BUS_YR_END_FLAG
-    data_type: boolean
   - name: ENUMERATION_TYPE
     data_type: string
-  - name: SOURCE
-    data_type: string
-  - name: SYSTEM
-    data_type: string
-  - name: ENUMERATION_VALUE
-    data_type: string
-  - name: ENUMERATION_DESCRIPTION
-    data_type: string
-  - name: INSERTED_BY
-    data_type: string
-  - name: INSERTED_ON
-    data_type: datetime
-  - name: UPDATED_BY
-    data_type: string
-  - name: UPDATED_ON
-    data_type: datetime
-  - name: ACTIVE_FLAG
-    data_type: boolean
-  - name: ENUMERATION_TYPE
+  - name: ISCASH
     data_type: string
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
 sql: >-
-  WITH POS AS
+  SELECT  
 
-  (
+  SECURITY_ID, 
+  HSBC_FUND_CODE,
+  ALADDIN_SECURITY_CUSIP,
+  POSITION_DATE,
+  FUND_CURRENCY,
+  LOCAL_CURRENCY,
+  ASSET_TYPE,
+  ASSET_SUBTYPE,
+  ENUMcash.ENUMERATION_TYPE,
+  MARKET_VALUE_DIRTY_IN_FUND_CURRENCY,
+  ACCRUED_INTEREST_IN_FUND_CURRENCY,
+  PRICE_CLEAN_IN_FUND_CURRENCY,
+  MBO_PRICE_IN_LOCAL_CURRENCY,
+  BID_PRICE_IN_LOCAL_CURRENCY,
+  WEIGHT,
+  IFF( ENUMCASH.ENUMERATION_TYPE = 'HSBC_GL' OR 
+  ASSET_TYPE = 'FORWARD CURRENCY' OR 
+  ASSET_SUBTYPE IN ('SP','FW','FC'),1,0 ) AS IsCash
 
-  SELECT  * 
-      
-  FROM   SE_DEMO_LIBRARY.RLAM_POV.SECURITY_POSITION
+  FROM SE_DEMO_LIBRARY.RLAM_POV.SECURITY_POSITION
 
-  WHERE   WEIGHT <> 0
+  LEFT JOIN SE_DEMO_LIBRARY.RLAM_POV.V_REF_ENUMERATION ENUMcash 
+  ON ENUMcash.ENUMERATION_VALUE = LEFT(SECURITY_ID, 7) || 'ccy' ||
+  SUBSTRING(SECURITY_ID, 11, 2)
 
-  ),
-
-
-  ENUMCash AS
-
-  (
-
-  SELECT  * 
-      
-  FROM   SE_DEMO_LIBRARY.RLAM_POV.V_REF_ENUMERATION
-
-  WHERE ENUMERATION_TYPE = 'HSBC_GL' 
-
-  )
-
-
-  SELECT  *, ENUMcash.ENUMERATION_VALUE
-
-
-  FROM POS 
-
-  LEFT JOIN  ENUMcash 
-
-  ON ENUMcash.ENUMERATION_VALUE = LEFT(POS.SECURITY_ID, 7) || 'ccy' ||
-  SUBSTRING(POS.SECURITY_ID, 11, 2)
+  WHERE WEIGHT <> 0

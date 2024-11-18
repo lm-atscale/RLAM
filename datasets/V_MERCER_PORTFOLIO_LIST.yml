@@ -3,7 +3,7 @@ object_type: dataset
 label: V_MERCER_PORTFOLIO_LIST
 columns:
   - name: ALADDIN_PORTFOLIO_ID
-    data_type: string
+    data_type: decimal(38,0)
   - name: HSBC_PORTFOLIO_CODE
     data_type: string
   - name: PORTFOLIO_LONG_NAME
@@ -24,13 +24,11 @@ columns:
     data_type: date
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
 sql: |-
-  select 
-          
-  p.*,
-  dt.CALENDAR_DATE as MonthEndDate, 
-  dt.QuarterStartDate as QuarterStartDate
-          
-  from SE_DEMO_LIBRARY.RLAM_POV.V_MERCER_PORTFOLIO_LIST p
-          
-  cross join SE_DEMO_LIBRARY.RLAM_POV.v_mercer_dates dt
-  WHERE HSBC_PORTFOLIO_CODE = 'RLACTPLRPF'
+  SELECT
+  P.*,
+  DT.CALENDAR_DATE as MONTHENDDATE, 
+  DT.QUARTERSTARTDATE
+
+  FROM SE_DEMO_LIBRARY.RLAM_POV.V_MERCER_PORTFOLIO_LIST P
+            
+  CROSS JOIN SE_DEMO_LIBRARY.RLAM_POV.V_MERCER_DATES DT

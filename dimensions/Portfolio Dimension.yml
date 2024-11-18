@@ -72,4 +72,12 @@ level_attributes:
     key_columns:
       - MONTHENDDATE
     name_column: MONTHENDDATE
+relationships:
+  - from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - HSBC_FUND_CODE
+    to:
+      level: Portfolio HSBC Code
+    type: snowflake
 type: standard
