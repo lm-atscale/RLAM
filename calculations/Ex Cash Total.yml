@@ -1,0 +1,6 @@
+unique_name: Ex Cash Total
+object_type: metric_calc
+label: Ex Cash Total
+expression: >-
+    ALLMEMBEREXCEPT( [Measures].[Weight_sum], {[Portfolio Dimension].[Portfolio Hierarchy], [Portfolio Dimension].[Date Hierarchy], [Class Dimension].[Classification]} ) 
+is_hidden: false

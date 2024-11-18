@@ -1,6 +1,6 @@
-unique_name: MarketValueDirty_sum
+unique_name: Market Value Dirty In Fund Currency_sum
 object_type: metric
-label: Market Value Dirty
+label: Market Value Dirty In Fund Currency_sum
 calculation_method: sum
 column: MARKET_VALUE_DIRTY_IN_FUND_CURRENCY
 dataset: SECURITY_POSITION

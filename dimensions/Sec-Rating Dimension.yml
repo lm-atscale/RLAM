@@ -1,0 +1,142 @@
+unique_name: Sec-Rating Dimension
+object_type: dimension
+label: Sec-Rating Dimension
+hierarchies:
+  - unique_name: Composite Rating Hierarchy
+    label: Composite Rating Hierarchy
+    levels:
+      - unique_name: Composite Rating Stripped
+      - unique_name: Composite Rating
+      - unique_name: Composite Rating_Join
+  - unique_name: Rating Factor Hierarchy
+    label: Rating Factor Hierarchy
+    levels:
+      - unique_name: Rating Factor
+      - unique_name: Rating Factor_Join
+        secondary_attributes:
+          - unique_name: Rating Factor_sd
+            label: Rating Factor
+            contains_unique_names: false
+            custom_empty_member:
+              name: '0'
+              key:
+                - '0'
+            dataset: RATINGFACTOR
+            is_unique_key: false
+            key_columns:
+              - TARGET_ENUMERATION_VALUE
+            name_column: TARGET_ENUMERATION_VALUE
+  - unique_name: Rating Order Hierarchy
+    label: Rating Order Hierarchy
+    levels:
+      - unique_name: Rating Order
+      - unique_name: Rating Order_Join
+level_attributes:
+  - unique_name: Composite Rating_Join
+    label: Composite Rating
+    contains_unique_names: false
+    custom_empty_member:
+      name: ‎
+      key:
+        - '1901-01-01'
+        - ‎
+        - ‎
+    dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - POSITION_DATE
+      - SECURITY_ID
+      - ALADDIN_SECURITY_CUSIP
+    name_column: LEVEL_01_NAME
+  - unique_name: Composite Rating Stripped
+    label: Rating
+    contains_unique_names: false
+    custom_empty_member:
+      name: Not Rated
+      key:
+        - 'null'
+    dataset: ENUM
+    is_unique_key: false
+    key_columns:
+      - SOURCE_ENUMERATION_VALUE
+    name_column: TARGET_ENUMERATION_VALUE
+  - unique_name: Composite Rating
+    label: Composite Rating
+    contains_unique_names: false
+    dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - LEVEL_01_NAME
+    name_column: LEVEL_01_NAME
+  - unique_name: Rating Factor_Join
+    label: Rating Factor
+    contains_unique_names: false
+    dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - SECURITY_ID
+      - ALADDIN_SECURITY_CUSIP
+      - POSITION_DATE
+    name_column: LEVEL_01_NAME
+  - unique_name: Rating Order
+    label: Rating Order
+    contains_unique_names: false
+    custom_empty_member:
+      name: '100'
+      key:
+        - 'null'
+    dataset: ENUMRATINGORDER
+    is_unique_key: false
+    key_columns:
+      - SOURCE_ENUMERATION_VALUE
+    name_column: TARGET_ENUMERATION_VALUE
+  - unique_name: Rating Order_Join
+    label: Rating Order
+    contains_unique_names: false
+    dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - SECURITY_ID
+      - ALADDIN_SECURITY_CUSIP
+      - POSITION_DATE
+    name_column: LEVEL_01_NAME
+  - unique_name: Rating Factor
+    label: Rating Factor
+    contains_unique_names: false
+    custom_empty_member:
+      name: '0'
+      key:
+        - 'null'
+    dataset: RATINGFACTOR
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - SOURCE_ENUMERATION_VALUE
+    name_column: TARGET_ENUMERATION_VALUE
+relationships:
+  - from:
+      dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+      join_columns:
+        - LEVEL_01_NAME
+    to:
+      level: Composite Rating Stripped
+    type: snowflake
+  - from:
+      dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+      join_columns:
+        - LEVEL_01_NAME
+    to:
+      level: Rating Order
+    type: snowflake
+  - from:
+      dataset: V_BL_SECURITY_CLASSIFICATION_HIST
+      join_columns:
+        - LEVEL_01_NAME
+    to:
+      level: Rating Factor
+    type: snowflake
+type: standard

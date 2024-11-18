@@ -2,289 +2,88 @@ unique_name: V_BL_SECURITY
 object_type: dataset
 label: V_BL_SECURITY
 columns:
-  - name: AS_OF_DATE
-    data_type: date
   - name: SECURITY_ID
     data_type: string
   - name: ALADDIN_SECURITY_CUSIP
     data_type: string
-  - name: ACCRUAL_START_DATE
-    data_type: datetime
   - name: ALADDIN_ISSUER_ID
     data_type: string
   - name: ALADDIN_SECURITY_GROUP
     data_type: string
-  - name: ALADDIN_SECURITY_TYPE
-    data_type: string
-  - name: CALL_MANDATORY_FLAG
-    data_type: boolean
-  - name: CONTRACT_SIZE
-    data_type: decimal(38,10)
-  - name: DOMICILE_COUNTRY
-    data_type: string
-  - name: DOMICILE_COUNTRY_NAME
-    data_type: string
-  - name: RISK_COUNTRY
-    data_type: string
-  - name: RISK_COUNTRY_NAME
-    data_type: string
   - name: ISSUE_COUNTRY
     data_type: string
-  - name: ISSUE_COUNTRY_NAME
+  - name: RLAM_CLASSIFICATION_L1_NAME
     data_type: string
-  - name: INCORPORATION_COUNTRY
+  - name: TARGET_ENUMERATION_VALUE
     data_type: string
-  - name: INCORPORATION_COUNTRY_NAME
-    data_type: string
-  - name: COUPON
-    data_type: string
-  - name: COUPON_RATE
-    data_type: string
-  - name: COUPON_FREQUENCY_CODE
-    data_type: string
-  - name: COUPON_FREQUENCY
-    data_type: string
-  - name: COUPON_FREQUENCY_NUMBER
-    data_type: decimal(38,0)
-  - name: COUPON_TYPE_CODE
-    data_type: string
-  - name: COUPON_TYPE
-    data_type: string
-  - name: FREQUENCY_TYPE_CODE
-    data_type: string
-  - name: ISSUE_CURRENCY
-    data_type: string
-  - name: ISSUE_CURRENCY_NAME
-    data_type: string
-  - name: ALADDIN_SECURITY_CUSIP_PAY
-    data_type: string
-  - name: ALADDIN_SECURITY_CUSIP_RECEIVE
-    data_type: string
-  - name: DAY_COUNT_CONVENTION_CODE
-    data_type: string
-  - name: DAY_COUNT_CONVENTION
-    data_type: string
-  - name: EXPIRY_DATE
-    data_type: datetime
-  - name: FIRST_PAY_DATE
-    data_type: datetime
-  - name: FIRST_RESET_DATE
-    data_type: datetime
-  - name: FIXED_COUPON
-    data_type: decimal(38,10)
-  - name: FLOATER_INITIAL_INTERPOLATION_START
-    data_type: string
-  - name: FLOATER_INITIAL_INTERPOLATION_END
-    data_type: string
-  - name: FLOATER_FINAL_INTERPOLATION_START
-    data_type: string
-  - name: FLOATER_FINAL_INTERPOLATION_END
-    data_type: string
-  - name: FLOATER_INDEX_TICKER
-    data_type: string
-  - name: FLOATER_INDEX_DESCRIPTION
-    data_type: string
-  - name: INFLATION_INDEX_CODE
-    data_type: string
-  - name: INFLATION_INDEX
-    data_type: string
-  - name: FLOATER_INITIAL_COUPON
-    data_type: decimal(38,9)
-  - name: FUTURE_CODE
-    data_type: string
-  - name: HSBC_SEC_CODE
-    data_type: string
-  - name: INFLATION_INDEX_LOOKBACK_PERIOD
-    data_type: decimal(38,10)
-  - name: ISIN
-    data_type: string
-  - name: ISSUE_DATE
-    data_type: datetime
-  - name: ISSUER_LEI
-    data_type: string
-  - name: LOCAL_EXCHANGE_MIC
-    data_type: string
-  - name: MATURITY_DATE
-    data_type: date
-  - name: MIN_TRADE_SIZE
-    data_type: decimal(38,10)
-  - name: MIN_LOT_SIZE
-    data_type: decimal(38,10)
-  - name: NOTIONAL_AMOUNT
-    data_type: decimal(38,10)
-  - name: NOTIONAL_PAY
-    data_type: string
-  - name: NOTIONAL_RECEIVE
-    data_type: string
-  - name: ORIGNAL_COUPON
-    data_type: string
-  - name: PAYMENT_ADJUSTMENT_METHOD
-    data_type: string
-  - name: PD_FACTOR
-    data_type: string
-  - name: PRICE_AS_PERCENT_FLAG
-    data_type: boolean
-  - name: PUT_MANDATORY_FLAG
-    data_type: boolean
-  - name: RESET_CALENDAR_CODE
-    data_type: string
-  - name: RESET_CALENDAR
-    data_type: string
-  - name: RESET_FREQUENCY
-    data_type: string
-  - name: ORIGINAL_SECURITY_LONG_NAME
-    data_type: string
-  - name: SECURITY_LONG_NAME
-    data_type: string
-  - name: SECURITY_SHORT_NAME
-    data_type: string
-  - name: SECURITY_INFORMATION1
-    data_type: string
-  - name: SECURITY_INFORMATION2
-    data_type: decimal(38,0)
-  - name: SEDOL
-    data_type: string
-  - name: SPREAD
-    data_type: decimal(38,9)
-  - name: ISSUE_SPREAD_BP
-    data_type: string
-  - name: STATESTREET_SEC_CODE
-    data_type: string
-  - name: TICKER
-    data_type: string
-  - name: PRICING_TIER
-    data_type: string
-  - name: CUSIP
-    data_type: string
-  - name: CUSIP_TYPE
-    data_type: string
-  - name: UNDERLYING_SECURITY_CUSIP
-    data_type: string
-  - name: UNDERLYING_BENCHMARK_CUSIP
-    data_type: string
-  - name: OPTION_TYPE
-    data_type: string
-  - name: OPTION_TYPE_DESCRIPTION
-    data_type: string
-  - name: STRIKE_PRICE
-    data_type: decimal(38,10)
-  - name: PRICE_DATE
-    data_type: date
-  - name: COB_PRICE
-    data_type: decimal(38,10)
-  - name: PRICE_CURRENCY
-    data_type: string
-  - name: FUTURES_PRICE_MULTIPLIER
-    data_type: decimal(38,10)
-  - name: LOAN_ID
-    data_type: string
-  - name: LIN
-    data_type: string
-  - name: CLEARING_EXCHANGE_CODE
-    data_type: string
-  - name: CLEARING_EXCHANGE
-    data_type: string
-  - name: OPTION_SETTLEMENT_METHOD_CODE
-    data_type: string
-  - name: OPTION_SETTLEMENT_METHOD
-    data_type: string
-  - name: PUT_CALL_FLAG
-    data_type: string
-  - name: PUT_CALL_FLAG_DESCRIPTION
-    data_type: string
-  - name: EXPECTED_MATURITY_DATE
-    data_type: datetime
-  - name: ASSET_ACTIVE_OR_INACTIVE_STATUS
-    data_type: string
-  - name: ASSET_INACTIVE_STATUS_REASON_CODE
-    data_type: string
-  - name: FLOATER_SPREAD
-    data_type: decimal(38,10)
-  - name: BOND_TYPE
-    data_type: string
-  - name: EXCHANGE_CODE
-    data_type: string
-  - name: FLOATER_INDEX_2_TICKER
-    data_type: string
-  - name: FUTURE_CLASS_CODE
-    data_type: string
-  - name: CALL_OPTION_EXERCISE_TYPE_CODE
-    data_type: string
-  - name: PUT_OPTION_EXERCISE_TYPE_CODE
-    data_type: string
-  - name: CFI_CODE
-    data_type: string
-  - name: CONTRACT_TICKER_PREFIX
-    data_type: string
-  - name: LEHMEN_INDUSTRY_CODE
-    data_type: string
-  - name: LEHMEN_INDUSTRY_DESCRIPTION
-    data_type: string
-  - name: IS_CONVERTIBLE_SECURITY
-    data_type: boolean
-  - name: CREDIT_DEFAULT_TYPE_CODE
-    data_type: string
-  - name: CREDIT_DEFAULT_TYPE_NAME
-    data_type: string
-  - name: REFERENCE_ENTITY_TYPE
-    data_type: string
-  - name: DELIVERY_METHOD
-    data_type: string
-  - name: OPTION_PAYMENT_SETTLEMENT_CURRENCY
-    data_type: string
-  - name: NEXT_CALL_DATE
-    data_type: date
-  - name: CURRENT_FACTOR
-    data_type: decimal(38,10)
-  - name: CURRENT_FACTOR_DATE
-    data_type: datetime
-  - name: OPTION_EXERCISE_TYPE
-    data_type: string
-  - name: IS_PERPETUAL
-    data_type: boolean
-  - name: FLOATER_SPREAD_BP
-    data_type: decimal(38,10)
-  - name: SHARES_AMT_OUTSTANDING
-    data_type: decimal(38,10)
-  - name: RLAM_INSURANCE_WRAPPING
-    data_type: string
-  - name: RLAM_SECTOR
-    data_type: string
-  - name: RESET_FREQ_DETAILED
-    data_type: string
-  - name: RESET_INDEX
-    data_type: string
-  - name: RESET_INDEX_DESCRIPTION
-    data_type: string
-  - name: SETTLEMENT_LOCATION_CODE
-    data_type: string
-  - name: UNITS
-    data_type: string
-  - name: PREMIUM_PRICE
-    data_type: string
-  - name: DEPOSITORY_RECEIPT_ID
-    data_type: string
-  - name: DEPOSITORY_RECEIPT_RATIO
-    data_type: decimal(38,10)
-  - name: RECORD_START_DATE
-    data_type: datetime
-  - name: RECORD_END_DATE
-    data_type: datetime
-  - name: RECORD_KEY
-    data_type: decimal(38,0)
-  - name: SOURCE
-    data_type: string
-  - name: FLAG_144A
-    data_type: string
-  - name: LIQUIDITY
-    data_type: string
-  - name: PREV_BD_FLAG
-    data_type: boolean
-  - name: BUS_MONTH_END_FLAG
-    data_type: boolean
-  - name: BUS_QT_END_FLAG
-    data_type: boolean
-  - name: BUS_YR_END_FLAG
+  - name: REGION
     data_type: string
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
-table: V_BL_SECURITY
+sql: >-
+
+  WITH POS AS
+  (
+  SELECT
+  SECURITY_ID
+
+  FROM SE_DEMO_LIBRARY.RLAM_POV.SECURITY_POSITION
+  GROUP BY SECURITY_ID
+  ),
+
+
+  SEC AS
+  (
+  SELECT 
+  SECURITY_ID,
+  ALADDIN_SECURITY_CUSIP,
+  ALADDIN_SECURITY_GROUP,
+  ALADDIN_ISSUER_ID,
+  ISSUE_COUNTRY
+       
+  FROM SE_DEMO_LIBRARY.RLAM_POV.V_BL_SECURITY
+  ),
+
+  CLASS AS
+  (
+  SELECT
+  SECURITY_ID,
+  RLAM_CLASSIFICATION_L1_NAME            
+  
+  FROM SE_DEMO_LIBRARY.RLAM_POV.V_SECURITY_RLAM_CLASSIFICATION
+  WHERE ( SECURITY_SOURCE = 'HSBC' OR SECURITY_SOURCE = 'STATESTREET' )
+  GROUP BY SECURITY_ID, RLAM_CLASSIFICATION_L1_NAME
+  ),
+
+  ENUMREGION AS
+  (
+  SELECT
+  SOURCE_ENUMERATION_VALUE,
+  TARGET_ENUMERATION_VALUE
+  
+  FROM   SE_DEMO_LIBRARY.RLAM_POV.V_REF_ENUMERATION_MAPPING
+  WHERE SOURCE_ENUMERATION_TYPE = 'ALADDIN_COUNTRY'
+  AND TARGET_ENUMERATION_TYPE = 'MERCER_REGION'
+  )
+    
+  SELECT
+  POS.SECURITY_ID,
+  RLAM_CLASSIFICATION_L1_NAME,
+  ALADDIN_SECURITY_CUSIP,
+  ALADDIN_SECURITY_GROUP,
+  ALADDIN_ISSUER_ID,
+  ISSUE_COUNTRY,
+  TARGET_ENUMERATION_VALUE,
+  CASE WHEN COALESCE(RLAM_CLASSIFICATION_L1_NAME,'UNKNOWN') NOT IN ('Cash',
+  'Currency') THEN IFNULL(enumRegion.target_enumeration_value, 'UNCLASSIFIED') ELSE 'Cash'
+  END AS REGION
+
+  FROM POS
+
+  LEFT JOIN CLASS
+  ON CLASS.SECURITY_ID = POS.SECURITY_ID
+
+  LEFT JOIN SEC
+  ON SEC.SECURITY_ID = POS.SECURITY_ID
+
+  LEFT JOIN ENUMREGION
+  ON SEC.ISSUE_COUNTRY = ENUMREGION.SOURCE_ENUMERATION_VALUE
