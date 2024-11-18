@@ -1,0 +1,6 @@
+unique_name: Bid Price In Local Currency_sum
+object_type: metric
+label: Bid Price In Local Currency_sum
+calculation_method: sum
+column: BID_PRICE_IN_LOCAL_CURRENCY
+dataset: SECURITY_POSITION

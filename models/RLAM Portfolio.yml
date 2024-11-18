@@ -3,39 +3,123 @@ object_type: model
 label: RLAM Portfolio
 dimensions: []
 metrics:
-  - unique_name: WEIGHT_sum
+  - unique_name: Market Value Dirty
+    folder: Calculated Metrics
+  - unique_name: Market Value Bid Price
+    folder: Calculated Metrics
+  - unique_name: Market value Mid Price
+    folder: Calculated Metrics
+  - unique_name: WRAF
+    folder: Calculated Metrics
+  - unique_name: Ex Cash Total
+    folder: Calculated Metrics
+  - unique_name: Re-Weighted Weight
+    folder: Calculated Metrics
+  - unique_name: Weight_sum
+    folder: Non-Calculated Metrics
+  - unique_name: Bid Price In Local Currency_sum
+    folder: Non-Calculated Metrics
+  - unique_name: MBO Price In Local Currency_sum
+    folder: Non-Calculated Metrics
+  - unique_name: Market Value Dirty In Fund Currency_sum
+    folder: Non-Calculated Metrics
+  - unique_name: Accrued Interest In Fund Currency_sum
+    folder: Non-Calculated Metrics
+  - unique_name: Price Clean In Fund Currency_sum
+    folder: Non-Calculated Metrics
+
 relationships:
-  - unique_name: SECURITY_POSITION_POSITION_DATE_to_Dimension_Position Date
-    from:
-      dataset: SECURITY_POSITION
-      join_columns:
-        - POSITION_DATE
-    to:
-      dimension: Dimension
-      level: Position Date
-  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Dimension_Security ID
-    from:
-      dataset: SECURITY_POSITION
-      join_columns:
-        - SECURITY_ID
-    to:
-      dimension: Dimension
-      level: Security ID
   - unique_name: >-
-      SECURITY_POSITION_ALADDIN_SECURITY_CUSIP_to_Dimension_Aladdin Security
-      CUSIP
-    from:
-      dataset: SECURITY_POSITION
-      join_columns:
-        - ALADDIN_SECURITY_CUSIP
-    to:
-      dimension: Dimension
-      level: Aladdin Security CUSIP
-  - unique_name: SECURITY_POSITION_HSBC_FUND_CODE_to_Dimension_Portfolio HSBC Code
+      SECURITY_POSITION_HSBC_FUND_CODE_to_Portfolio Dimension_Portfolio HSBC
+      Code
     from:
       dataset: SECURITY_POSITION
       join_columns:
         - HSBC_FUND_CODE
     to:
-      dimension: Dimension
+      dimension: Portfolio Dimension
       level: Portfolio HSBC Code
+  - unique_name: SECURITY_POSITION_POSITION_DATE_to_Portfolio Dimension_Month End Date
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - POSITION_DATE
+    to:
+      dimension: Portfolio Dimension
+      level: Month End Date
+  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Class Dimension_Class Security ID
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+    to:
+      dimension: Class Dimension
+      level: Class Security ID
+  - unique_name: >-
+      SECURITY_POSITION_ALADDIN_SECURITY_CUSIP_to_Security Dimension_Aladdin
+      Security CUSIP
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - ALADDIN_SECURITY_CUSIP
+    to:
+      dimension: Security Dimension
+      level: Aladdin Security CUSIP
+  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Security Dimension_Security ID
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+    to:
+      dimension: Security Dimension
+      level: Security ID POS
+  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Security Dimension_Region Security ID
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+    to:
+      dimension: Security Dimension
+      level: Region Security ID
+  - unique_name: >-
+      SECURITY_POSITION_POSITION_DATE_to_Sec-Rating Dimension_Composite
+      Rating_Join
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - POSITION_DATE
+        - SECURITY_ID
+        - ALADDIN_SECURITY_CUSIP
+    to:
+      dimension: Sec-Rating Dimension
+      level: Composite Rating_Join
+  - unique_name: >-
+      SECURITY_POSITION_ALADDIN_SECURITY_CUSIP_to_Sec-Rating Dimension_Rating
+      Factor_Join
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+        - ALADDIN_SECURITY_CUSIP
+        - POSITION_DATE
+    to:
+      dimension: Sec-Rating Dimension
+      level: Rating Factor_Join
+  - unique_name: SECURITY_POSITION_POSITION_DATE_to_Sec-Rating Dimension_Rating Order_Join
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+        - ALADDIN_SECURITY_CUSIP
+        - POSITION_DATE
+    to:
+      dimension: Sec-Rating Dimension
+      level: Rating Order_Join
+  - unique_name: SECURITY_POSITION_SECURITY_ID_to_Class Dimension_Issuer Security ID
+    from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - SECURITY_ID
+    to:
+      dimension: Class Dimension
+      level: Issuer Security ID

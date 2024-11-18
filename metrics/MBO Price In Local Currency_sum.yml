@@ -1,0 +1,6 @@
+unique_name: MBO Price In Local Currency_sum
+object_type: metric
+label: MBO Price In Local Currency_sum
+calculation_method: sum
+column: MBO_PRICE_IN_LOCAL_CURRENCY
+dataset: SECURITY_POSITION

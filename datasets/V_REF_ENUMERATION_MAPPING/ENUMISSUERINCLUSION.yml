@@ -1,6 +1,6 @@
-unique_name: V_REF_ENUMERATION_MAPPING
+unique_name: ENUMISSUERINCLUSION
 object_type: dataset
-label: V_REF_ENUMERATION_MAPPING
+label: ENUMISSUERINCLUSION
 columns:
   - name: SOURCE_ENUMERATION_TYPE
     data_type: string
@@ -29,4 +29,10 @@ columns:
   - name: ACTIVE_FLAG
     data_type: boolean
 connection_id: con_SE_DEMO_LIBRARY_RLAM_POV
-table: V_REF_ENUMERATION_MAPPING
+sql: |2
+    SELECT  * 
+        
+    FROM   SE_DEMO_LIBRARY.RLAM_POV.V_REF_ENUMERATION_MAPPING
+
+    WHERE SOURCE_ENUMERATION_TYPE = 'RLAM_INSTRUMENT_TYPE_L5_CODE'
+    AND TARGET_ENUMERATION_TYPE = 'MERCER_L5_CODE_EXCLUDE'

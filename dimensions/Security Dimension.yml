@@ -1,0 +1,87 @@
+unique_name: Security Dimension
+object_type: dimension
+label: Security Dimension
+hierarchies:
+  - unique_name: Security Hierarchy
+    label: Security Hierarchy
+    levels:
+      - unique_name: Aladdin Security Group
+      - unique_name: Issuer ID
+      - unique_name: Aladdin Security CUSIP
+      - unique_name: Security ID POS
+  - unique_name: Region Hierarchy
+    label: Region Hierarchy
+    levels:
+      - unique_name: Region
+      - unique_name: Region Security ID
+level_attributes:
+  - unique_name: Aladdin Security Group
+    label: Aladdin Security Group
+    contains_unique_names: false
+    dataset: V_BL_SECURITY
+    is_unique_key: false
+    key_columns:
+      - ALADDIN_SECURITY_GROUP
+    name_column: ALADDIN_SECURITY_GROUP
+  - unique_name: Aladdin Security CUSIP
+    label: Aladdin Security CUSIP
+    contains_unique_names: false
+    custom_empty_member:
+      name: ‎
+      key:
+        - 'null'
+    dataset: V_BL_SECURITY
+    is_unique_key: false
+    key_columns:
+      - ALADDIN_SECURITY_CUSIP
+    name_column: ALADDIN_SECURITY_CUSIP
+  - unique_name: Issuer ID
+    label: Issuer ID
+    contains_unique_names: false
+    dataset: V_BL_SECURITY
+    is_unique_key: false
+    key_columns:
+      - ALADDIN_ISSUER_ID
+    name_column: ALADDIN_ISSUER_ID
+  - unique_name: Security ID POS
+    label: Security ID
+    contains_unique_names: false
+    custom_empty_member:
+      name: ‎
+      key:
+        - 'null'
+    dataset: V_BL_SECURITY
+    is_unique_key: false
+    key_columns:
+      - SECURITY_ID
+    name_column: SECURITY_ID
+  - unique_name: Region
+    label: Region
+    contains_unique_names: false
+    custom_empty_member:
+      name: UNCLASSIFIED
+      key:
+        - 'null'
+    dataset: V_BL_SECURITY
+    is_unique_key: false
+    key_columns:
+      - REGION
+    name_column: REGION
+  - unique_name: Region Security ID
+    label: Region Security ID
+    contains_unique_names: false
+    dataset: V_BL_SECURITY
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - SECURITY_ID
+    name_column: SECURITY_ID
+relationships:
+  - from:
+      dataset: SECURITY_POSITION
+      join_columns:
+        - ALADDIN_SECURITY_CUSIP
+    to:
+      level: Aladdin Security CUSIP
+    type: snowflake
+type: standard

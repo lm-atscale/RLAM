@@ -1,0 +1,15 @@
+unique_name: Re-Weighted Weight
+object_type: metric_calc
+label: Re-Weighted Weight
+expression: |-
+  CASE when [Portfolio Dimension].[ExCash].CurrentMember.Name = 1 
+        AND [Measures].[Ex Cash Total] <> 0
+        AND [Class Dimension].[Classification].CurrentMember.Name  <> 'Cash'
+        Then ([Measures].[Weight_sum] / [Measures].[Ex Cash Total])*100
+
+       when [Portfolio Dimension].[ExCash].CurrentMember.Name = 1 
+        AND [Class Dimension].[Classification].CurrentMember.Name  <> 'Cash'
+        Then 0
+
+        Else [Measures].[Weight_sum] END
+is_hidden: false
