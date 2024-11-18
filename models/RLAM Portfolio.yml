@@ -123,3 +123,16 @@ relationships:
     to:
       dimension: Class Dimension
       level: Issuer Security ID
+
+dataset_properties:
+  SECURITY_POSITION:
+    create_hinted_aggregate: true
+
+  V_BL_SECURITY:
+    create_hinted_aggregate: true
+
+  V_SECURITY_RLAM_CLASSIFICATION:
+    create_hinted_aggregate: true
+
+  V_BL_SECURITY_CLASSIFICATION_HIST:
+    create_hinted_aggregate: true
